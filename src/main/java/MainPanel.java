@@ -21,13 +21,13 @@ public class MainPanel extends JPanel {
 
     public void opening() {
         JLabel welcome = new JLabel("Welcome to the online shopping website");
-        welcome.setBounds(Final.WELECOME_X, Final.Y, Final.WELECOME_HEIGHT, Final.HEIGHT_OF_JLABEL);
+        welcome.setBounds(Final.WELECOME_X, Final.Y, Final.WELECOME_WIDTH, Final.HEIGHT_OF_JLABEL);
         welcome.setFont(new Font("Serif", Font.BOLD, 20));
         welcome.setForeground(Color.BLUE);
         this.add(welcome);
 
         JLabel welcome2 = new JLabel("Please login to continue");
-        welcome2.setBounds(Final.WELECOME_X, Final.WELECOME2_Y, Final.WELECOME2_HEIGHT, Final.HEIGHT_OF_JLABEL);
+        welcome2.setBounds(Final.WELECOME_X, Final.WELECOME2_Y, Final.WELECOME2_WIDTH, Final.HEIGHT_OF_JLABEL);
         welcome2.setFont(new Font("Serif", Font.BOLD, 20));
         welcome2.setForeground(Color.BLUE);
         this.add(welcome2);
@@ -45,9 +45,18 @@ public class MainPanel extends JPanel {
         login.setBounds(Final.PHONE_NUM_X + Final.PHONE_NUM_WIDTH + 10, Final.PHONE_NUM_Y, Final.PHONE_NUM_WIDTH / 2, Final.PHONE_NUM_HEIGHT);
         this.add(login);
         login.addActionListener(e -> {
-            standbyFunction(this.legalPhoneNum);
-            //do something
+            if (standbyFunction(this.legalPhoneNum)) {
+
+                this.setVisible(false);
+                TheShop theShop = new TheShop(Final.X, Final.Y, Final.WIDTH, Final.HEIGHT);
+                removeAll();
+                this.add(theShop);
+                this.setVisible(true);
+
+                System.out.println("login");
+            }
         });
+
 
     }
 
@@ -63,11 +72,17 @@ public class MainPanel extends JPanel {
         return true;
     }
 
-    public void standbyFunction(Boolean legalPhoneNum) {
+    public Boolean standbyFunction(Boolean legalPhoneNum) {
+        Boolean legal;
         if (!legalPhoneNum) {
             JOptionPane.showMessageDialog(null, "Please enter a valid phone number");
+            legal = false;
+        } else {
+            legal = true;
         }
+        return legal;
     }
+
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         this.imageIcon.paintIcon(this, graphics, 0, 0);

@@ -7,7 +7,7 @@ public class Main extends JFrame {
     }
 
     public Main() {
-        this.setTitle("Image Processing");
+        this.setTitle("the shop");
         this.setLayout(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(Final.WIDTH, Final.HEIGHT);
