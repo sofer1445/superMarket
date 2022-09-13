@@ -65,6 +65,7 @@ public class TheShop extends JPanel {
 
     public void cleaners() {
         System.out.println("cleaners");
+        remove();
         this.soap = new JButton("Soap");
         soap.setBounds(Final.SOAP_X, Final.SOAP_Y, Final.SOAP_WIDTH, Final.SOAP_HEIGHT);
         soap.setFont(new Font("Serif", Font.BOLD, 15));
@@ -110,8 +111,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
+
     public void milkProducts() {
         System.out.println("milk products");
+        remove();
         this.milk = new JButton("Milk");
         milk.setBounds(Final.MILK_X, Final.MILK_Y, Final.MILK_WIDTH, Final.MILK_HEIGHT);
         milk.setFont(new Font("Serif", Font.BOLD, 15));
@@ -156,8 +159,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
+
     public void grains() {
         System.out.println("grains");
+        remove();
         this.rice = new JButton("Rice");
         rice.setBounds(Final.RICE_X, Final.RICE_Y, Final.RICE_WIDTH, Final.RICE_HEIGHT);
         rice.setFont(new Font("Serif", Font.BOLD, 15));
@@ -202,8 +207,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
-    public void typesOfBreads(){
+
+    public void typesOfBreads() {
         System.out.println("types of breads");
+        remove();
         this.whiteBread = new JButton("White bread");
         whiteBread.setBounds(Final.WHITE_BREAD_X, Final.WHITE_BREAD_Y, Final.WHITE_BREAD_WIDTH, Final.WHITE_BREAD_HEIGHT);
         whiteBread.setFont(new Font("Serif", Font.BOLD, 15));
@@ -248,8 +255,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
-    public void fruit(){
+
+    public void fruit() {
         System.out.println("fruit");
+        remove();
         this.apple = new JButton("Apple");
         apple.setBounds(Final.APPLE_X, Final.APPLE_Y, Final.APPLE_WIDTH, Final.APPLE_HEIGHT);
         apple.setFont(new Font("Serif", Font.BOLD, 15));
@@ -294,8 +303,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
-    public void vegetables(){
+
+    public void vegetables() {
         System.out.println("vegetables");
+        remove();
         this.tomato = new JButton("Tomato");
         tomato.setBounds(Final.TOMATO_X, Final.TOMATO_Y, Final.TOMATO_WIDTH, Final.TOMATO_HEIGHT);
         tomato.setFont(new Font("Serif", Font.BOLD, 15));
@@ -340,8 +351,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
-    public void meat(){
+
+    public void meat() {
         System.out.println("meat");
+        remove();
         this.hamburger = new JButton("Hamburger");
         hamburger.setBounds(Final.HAMBURGER_X, Final.HAMBURGER_Y, Final.HAMBURGER_WIDTH, Final.HAMBURGER_HEIGHT);
         hamburger.setFont(new Font("Serif", Font.BOLD, 15));
@@ -386,8 +399,10 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
-    public void other(){
+
+    public void other() {
         System.out.println("other");
+        remove();
         this.sugar = new JButton("Sugar");
         sugar.setBounds(Final.SUGAR_X, Final.SUGAR_Y, Final.SUGAR_WIDTH, Final.SUGAR_HEIGHT);
         sugar.setFont(new Font("Serif", Font.BOLD, 15));
@@ -432,6 +447,7 @@ public class TheShop extends JPanel {
         });
         this.repaint();
     }
+
     public void choiceOfOptions(String typeOfProduct) {
         System.out.println("choiceOfOptions : start");
         switch (typeOfProduct) {
@@ -460,8 +476,77 @@ public class TheShop extends JPanel {
                 other();
                 break;
             case "All":
+                all();
                 break;
         }
+    }public void remove() {
+        System.out.println("remove : start");
+        try {
+            this.remove(soap);
+            this.remove(shampoo);
+            this.remove(paperToilet);
+        } catch (Exception e) {
+            System.out.println("remove : soap, shampoo, paperToilet");
+        }
+        try {
+            this.remove(milk);
+            this.remove(cheese);
+            this.remove(yogurt);
+        } catch (Exception e) {
+            System.out.println("remove : milk, cheese, yogurt");
+        }
+        try{
+        this.remove(rice);
+        this.remove(pasta);
+        this.remove(quinoa);
+        }catch (Exception e){
+            System.out.println("remove : rice, pasta, quinoa");
+        }
+        try{
+        this.remove(whiteBread);
+        this.remove(slicedBread);
+        this.remove(lightBread);
+        }catch (Exception e){
+            System.out.println("remove : whiteBread, slicedBread, lightBread");
+        }
+        try{
+        this.remove(apple);
+        this.remove(orange);
+        this.remove(banana);
+        }catch (Exception e){
+            System.out.println("remove : apple, orange, banana");
+        }
+        try {
+        this.remove(tomato);
+        this.remove(cucumber);
+        this.remove(lettuce);
+        }catch (Exception e){
+            System.out.println("remove : tomato, cucumber, lettuce");
+        }
+        try{
+        this.remove(hamburger);
+        this.remove(chickenBreast);
+        this.remove(schnitzel);
+        }catch (Exception e){
+            System.out.println("remove : hamburger, chickenBreast, schnitzel");
+        }
+        try{
+        this.remove(sugar);
+        this.remove(salt);
+        this.remove(oliveOil);
+        }catch (Exception e){
+            System.out.println("remove : sugar, salt, oliveOil");
+        }
+        this.repaint();
     }
-
+    public void all(){
+        JComboBox<String> allPro = new JComboBox<>(new String[]{"List of all products","soap", "shampoo", "paperToilet", "milk", "cheese", "yogurt", "rice", "pasta", "quinoa", "whiteBread", "slicedBread", "lightBread", "apple", "orange", "banana", "tomato", "cucumber", "lettuce", "hamburger", "chickenBreast", "schnitzel", "sugar", "salt", "oliveOil"});
+        allPro.setBounds(Final.ALL_X, Final.ALL_Y, Final.ALL_WIDTH, Final.ALL_HEIGHT);
+        allPro.setFont(new Font("Serif", Font.BOLD, 15));
+        allPro.setForeground(Color.BLACK);
+        this.add(allPro);
+        this.repaint();
+    }
 }
+
+

@@ -118,6 +118,10 @@ public class Final {
     public static final int OLIVE_OIL_Y = SOAP_Y;
     public static final int OLIVE_OIL_WIDTH = 150;
     public static final int OLIVE_OIL_HEIGHT = 100;
+    public static final int ALL_X = SOAP_X;
+    public static final int ALL_Y = SOAP_Y;
+    public static final int ALL_WIDTH = 150;
+    public static final int ALL_HEIGHT = 55;
 
 
 }
