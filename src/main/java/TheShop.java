@@ -1,5 +1,11 @@
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class TheShop extends JPanel {
     private ImageIcon imageIcon;
@@ -30,6 +36,10 @@ public class TheShop extends JPanel {
     private JButton sugar;
     private JButton salt;
     private JButton oliveOil;
+    private JComboBox<String> allPro;
+    private ProductPrices productPrices;
+    private JButton shoppingCart;
+
 
     public TheShop(int x, int y, int width, int height) {
         this.setBounds(x, y, width, height);
@@ -38,7 +48,10 @@ public class TheShop extends JPanel {
         this.setVisible(true);
         this.imageIcon = new ImageIcon("image21.jpg");
         this.add(new JLabel(imageIcon));
+        this.productPrices = new ProductPrices();
         listOfCategories();
+        viewShoppingCart();
+
     }
 
     protected void paintComponent(Graphics graphics) {
@@ -74,6 +87,7 @@ public class TheShop extends JPanel {
         soap.addActionListener(e -> {
             try {
                 System.out.println("Soap");
+                this.productPrices.shufersalPriceComparison(Final.SOAP);
 
             } catch (Exception e1) {
                 System.out.println("Soap error");
@@ -89,7 +103,7 @@ public class TheShop extends JPanel {
         shampoo.addActionListener(e -> {
             try {
                 System.out.println("Shampoo");
-
+                this.productPrices.shufersalPriceComparison(Final.SHAMPOO);
             } catch (Exception e1) {
                 System.out.println("Shampoo error");
             }
@@ -103,13 +117,14 @@ public class TheShop extends JPanel {
         paperToilet.addActionListener(e -> {
             try {
                 System.out.println("Paper toilet");
-
+                this.productPrices.shufersalPriceComparison(Final.PAPER_TOILET);
             } catch (Exception e1) {
                 System.out.println("Paper toilet error");
             }
 
         });
         this.repaint();
+
     }
 
     public void milkProducts() {
@@ -123,7 +138,7 @@ public class TheShop extends JPanel {
         milk.addActionListener(e -> {
             try {
                 System.out.println("Milk");
-
+                this.productPrices.shufersalPriceComparison(Final.MILK);
             } catch (Exception e1) {
                 System.out.println("Milk error");
             }
@@ -137,7 +152,7 @@ public class TheShop extends JPanel {
         cheese.addActionListener(e -> {
             try {
                 System.out.println("Cheese");
-
+                this.productPrices.shufersalPriceComparison(Final.CHEESE);
             } catch (Exception e1) {
                 System.out.println("Cheese error");
             }
@@ -151,7 +166,7 @@ public class TheShop extends JPanel {
         yogurt.addActionListener(e -> {
             try {
                 System.out.println("Yogurt");
-
+                this.productPrices.shufersalPriceComparison(Final.YOGURT);
             } catch (Exception e1) {
                 System.out.println("Yogurt error");
             }
@@ -171,7 +186,7 @@ public class TheShop extends JPanel {
         rice.addActionListener(e -> {
             try {
                 System.out.println("Rice");
-
+                this.productPrices.shufersalPriceComparison(Final.RICE);
             } catch (Exception e1) {
                 System.out.println("Rice error");
             }
@@ -185,7 +200,7 @@ public class TheShop extends JPanel {
         pasta.addActionListener(e -> {
             try {
                 System.out.println("Pasta");
-
+                this.productPrices.shufersalPriceComparison(Final.PASTA);
             } catch (Exception e1) {
                 System.out.println("Pasta error");
             }
@@ -199,7 +214,7 @@ public class TheShop extends JPanel {
         quinoa.addActionListener(e -> {
             try {
                 System.out.println("Quinoa");
-
+                this.productPrices.shufersalPriceComparison(Final.QUINOA);
             } catch (Exception e1) {
                 System.out.println("Quinoa error");
             }
@@ -219,7 +234,7 @@ public class TheShop extends JPanel {
         whiteBread.addActionListener(e -> {
             try {
                 System.out.println("White bread");
-
+                this.productPrices.shufersalPriceComparison(Final.WHITE_BREAD);
             } catch (Exception e1) {
                 System.out.println("White bread error");
             }
@@ -233,7 +248,7 @@ public class TheShop extends JPanel {
         slicedBread.addActionListener(e -> {
             try {
                 System.out.println("Sliced bread");
-
+                this.productPrices.shufersalPriceComparison(Final.SLICED_BREAD);
             } catch (Exception e1) {
                 System.out.println("Sliced bread error");
             }
@@ -247,7 +262,7 @@ public class TheShop extends JPanel {
         lightBread.addActionListener(e -> {
             try {
                 System.out.println("Light bread");
-
+                this.productPrices.shufersalPriceComparison(Final.LIGHT_BREAD);
             } catch (Exception e1) {
                 System.out.println("Light bread error");
             }
@@ -267,7 +282,7 @@ public class TheShop extends JPanel {
         apple.addActionListener(e -> {
             try {
                 System.out.println("Apple");
-
+                this.productPrices.shufersalPriceComparison(Final.APPLE);
             } catch (Exception e1) {
                 System.out.println("Apple error");
             }
@@ -281,7 +296,7 @@ public class TheShop extends JPanel {
         orange.addActionListener(e -> {
             try {
                 System.out.println("Orange");
-
+                this.productPrices.shufersalPriceComparison(Final.ORANGE);
             } catch (Exception e1) {
                 System.out.println("Orange error");
             }
@@ -295,7 +310,7 @@ public class TheShop extends JPanel {
         banana.addActionListener(e -> {
             try {
                 System.out.println("Banana");
-
+                this.productPrices.shufersalPriceComparison(Final.BANANA);
             } catch (Exception e1) {
                 System.out.println("Banana error");
             }
@@ -315,7 +330,7 @@ public class TheShop extends JPanel {
         tomato.addActionListener(e -> {
             try {
                 System.out.println("Tomato");
-
+                this.productPrices.shufersalPriceComparison(Final.TOMATO);
             } catch (Exception e1) {
                 System.out.println("Tomato error");
             }
@@ -329,7 +344,7 @@ public class TheShop extends JPanel {
         cucumber.addActionListener(e -> {
             try {
                 System.out.println("Cucumber");
-
+                this.productPrices.shufersalPriceComparison(Final.CUCUMBER);
             } catch (Exception e1) {
                 System.out.println("Cucumber error");
             }
@@ -343,7 +358,7 @@ public class TheShop extends JPanel {
         lettuce.addActionListener(e -> {
             try {
                 System.out.println("Lettuce");
-
+                this.productPrices.shufersalPriceComparison(Final.LETTUCE);
             } catch (Exception e1) {
                 System.out.println("Lettuce error");
             }
@@ -363,7 +378,7 @@ public class TheShop extends JPanel {
         hamburger.addActionListener(e -> {
             try {
                 System.out.println("Hamburger");
-
+                this.productPrices.shufersalPriceComparison(Final.HAMBURGER);
             } catch (Exception e1) {
                 System.out.println("Hamburger error");
             }
@@ -377,7 +392,7 @@ public class TheShop extends JPanel {
         chickenBreast.addActionListener(e -> {
             try {
                 System.out.println("Chicken breast");
-
+                this.productPrices.shufersalPriceComparison(Final.CHICKEN_BREAST);
             } catch (Exception e1) {
                 System.out.println("Chicken breast error");
             }
@@ -391,7 +406,7 @@ public class TheShop extends JPanel {
         schnitzel.addActionListener(e -> {
             try {
                 System.out.println("Schnitzel");
-
+                this.productPrices.shufersalPriceComparison(Final.SCHNITZEL);
             } catch (Exception e1) {
                 System.out.println("Schnitzel error");
             }
@@ -411,7 +426,7 @@ public class TheShop extends JPanel {
         sugar.addActionListener(e -> {
             try {
                 System.out.println("Sugar");
-
+                this.productPrices.shufersalPriceComparison(Final.SUGAR);
             } catch (Exception e1) {
                 System.out.println("Sugar error");
             }
@@ -425,7 +440,7 @@ public class TheShop extends JPanel {
         salt.addActionListener(e -> {
             try {
                 System.out.println("Salt");
-
+                this.productPrices.shufersalPriceComparison(Final.SALT);
             } catch (Exception e1) {
                 System.out.println("Salt error");
             }
@@ -439,7 +454,7 @@ public class TheShop extends JPanel {
         oliveOil.addActionListener(e -> {
             try {
                 System.out.println("Olive oil");
-
+                this.productPrices.shufersalPriceComparison(Final.OLIVE_OIL);
             } catch (Exception e1) {
                 System.out.println("Olive oil error");
             }
@@ -479,7 +494,9 @@ public class TheShop extends JPanel {
                 all();
                 break;
         }
-    }public void remove() {
+    }
+
+    public void remove() {
         System.out.println("remove : start");
         try {
             this.remove(soap);
@@ -495,56 +512,124 @@ public class TheShop extends JPanel {
         } catch (Exception e) {
             System.out.println("remove : milk, cheese, yogurt");
         }
-        try{
-        this.remove(rice);
-        this.remove(pasta);
-        this.remove(quinoa);
-        }catch (Exception e){
+        try {
+            this.remove(rice);
+            this.remove(pasta);
+            this.remove(quinoa);
+        } catch (Exception e) {
             System.out.println("remove : rice, pasta, quinoa");
         }
-        try{
-        this.remove(whiteBread);
-        this.remove(slicedBread);
-        this.remove(lightBread);
-        }catch (Exception e){
+        try {
+            this.remove(whiteBread);
+            this.remove(slicedBread);
+            this.remove(lightBread);
+        } catch (Exception e) {
             System.out.println("remove : whiteBread, slicedBread, lightBread");
         }
-        try{
-        this.remove(apple);
-        this.remove(orange);
-        this.remove(banana);
-        }catch (Exception e){
+        try {
+            this.remove(apple);
+            this.remove(orange);
+            this.remove(banana);
+        } catch (Exception e) {
             System.out.println("remove : apple, orange, banana");
         }
         try {
-        this.remove(tomato);
-        this.remove(cucumber);
-        this.remove(lettuce);
-        }catch (Exception e){
+            this.remove(tomato);
+            this.remove(cucumber);
+            this.remove(lettuce);
+        } catch (Exception e) {
             System.out.println("remove : tomato, cucumber, lettuce");
         }
-        try{
-        this.remove(hamburger);
-        this.remove(chickenBreast);
-        this.remove(schnitzel);
-        }catch (Exception e){
+        try {
+            this.remove(hamburger);
+            this.remove(chickenBreast);
+            this.remove(schnitzel);
+        } catch (Exception e) {
             System.out.println("remove : hamburger, chickenBreast, schnitzel");
         }
-        try{
-        this.remove(sugar);
-        this.remove(salt);
-        this.remove(oliveOil);
-        }catch (Exception e){
+        try {
+            this.remove(sugar);
+            this.remove(salt);
+            this.remove(oliveOil);
+        } catch (Exception e) {
             System.out.println("remove : sugar, salt, oliveOil");
+        }
+        try {
+            this.remove(allPro);
+        } catch (Exception e) {
+            System.out.println("remove : allPro");
         }
         this.repaint();
     }
-    public void all(){
-        JComboBox<String> allPro = new JComboBox<>(new String[]{"List of all products","soap", "shampoo", "paperToilet", "milk", "cheese", "yogurt", "rice", "pasta", "quinoa", "whiteBread", "slicedBread", "lightBread", "apple", "orange", "banana", "tomato", "cucumber", "lettuce", "hamburger", "chickenBreast", "schnitzel", "sugar", "salt", "oliveOil"});
+
+    public void all() {
+        System.out.println("all");
+        remove();
+        this.allPro = new JComboBox<>(new String[]{"List of all products", "soap", "shampoo", "paperToilet", "milk", "cheese", "yogurt", "rice", "pasta", "quinoa", "whiteBread", "slicedBread", "lightBread", "apple", "orange", "banana", "tomato", "cucumber", "lettuce", "hamburger", "chickenBreast", "schnitzel", "sugar", "salt", "oliveOil"});
         allPro.setBounds(Final.ALL_X, Final.ALL_Y, Final.ALL_WIDTH, Final.ALL_HEIGHT);
         allPro.setFont(new Font("Serif", Font.BOLD, 15));
         allPro.setForeground(Color.BLACK);
         this.add(allPro);
+        allPro.addActionListener(e -> {
+            try {
+                String product = (String) allPro.getSelectedItem();
+                System.out.println("allPro");
+                switch (product) {
+                    case "soap", "shampoo", "paperToilet":
+                        cleaners();
+                        break;
+                    case "milk", "cheese", "yogurt":
+                        milkProducts();
+                        break;
+                    case "rice", "pasta", "quinoa":
+                        grains();
+                        break;
+                    case "whiteBread", "slicedBread", "lightBread":
+                        typesOfBreads();
+                        break;
+                    case "apple", "orange", "banana":
+                        fruit();
+                        break;
+                    case "tomato", "cucumber", "lettuce":
+                        vegetables();
+                        break;
+                    case "hamburger", "chickenBreast", "schnitzel":
+                        meat();
+                        break;
+                    case "sugar", "salt", "oliveOil":
+                        other();
+                        break;
+                }
+
+            } catch (Exception e1) {
+                System.out.println("allPro error");
+            }
+
+        });
+        this.repaint();
+    }
+
+    public void viewShoppingCart() {
+        System.out.println("ViewShoppingCart : start");
+        this.shoppingCart = new JButton("Shopping cart");
+        shoppingCart.setBounds(Final.SHOPPING_CART_X, Final.SHOPPING_CART_Y, Final.SHOPPING_CART_WIDTH, Final.SHOPPING_CART_HEIGHT);
+        shoppingCart.setFont(new Font("Serif", Font.PLAIN, 15));
+        shoppingCart.setForeground(Color.BLACK);
+        this.add(shoppingCart);
+        shoppingCart.addActionListener(e -> {
+            try {
+                System.out.println("Cart contents");
+                List<String> cart = this.productPrices.shoppingCart();
+                JLabel jLabel = new JLabel(cart.toString());
+                jLabel.setBounds(Final.SOAP_X, Final.SOAP_Y + 3 * Final.SOAP_HEIGHT, 200, 150);
+                this.add(jLabel);
+                JOptionPane.showMessageDialog(null, jLabel);
+
+            } catch (Exception e1) {
+                System.out.println(e1 + "Cart contents error");
+            }
+
+        });
         this.repaint();
     }
 }

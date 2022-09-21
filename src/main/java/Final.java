@@ -122,6 +122,41 @@ public class Final {
     public static final int ALL_Y = SOAP_Y;
     public static final int ALL_WIDTH = 150;
     public static final int ALL_HEIGHT = 55;
+    public static final int SHOPPING_CART_X = 1200;
+    public static final int SHOPPING_CART_Y = 440;
+    public static final int SHOPPING_CART_WIDTH = 120;
+    public static final int SHOPPING_CART_HEIGHT = 80;
+    public static final String SOAP = "סבון";
+    public static final String SHAMPOO = "שמפו";
+    public static final String PAPER_TOILET = "נייר טואלט";
+    public static final String MILK = "חלב";
+    public static final String CHEESE = "גבינה";
+    public static final String YOGURT = "יוגורט";
+    public static final String RICE = "אורז";
+    public static final String PASTA = "פסטה";
+    public static final String QUINOA = "קינואה";
+    public static final String WHITE_BREAD = "לחם לבן";
+    public static final String SLICED_BREAD = "לחם פרוס";
+    public static final String LIGHT_BREAD = "לחם קל";
+    public static final String APPLE = "תפוח";
+    public static final String ORANGE = "בננה";
+    public static final String BANANA = "תפוז";
+    public static final String TOMATO = "עגבניה";
+    public static final String CUCUMBER = "מלפפון";
+    public static final String LETTUCE = "חסה";
+    public static final String HAMBURGER = "המבורגר";
+    public static final String CHICKEN_BREAST = "חזה עוף";
+    public static final String SCHNITZEL = "שניצל";
+    public static final String SUGAR = "סוכר";
+    public static final String SALT = "מלח";
+    public static final String OLIVE_OIL = "שמן זית";
+    public static final String URL_SHUFERSAL = "https://www.shufersal.co.il/online/he/search?text=";
+    public static final String URL_RAMI_LEVI = "https://www.rami-levy.co.il/he/online/search?q=";
+    public static final String URL_QUIK = "https://quik.co.il/search-result/";
+    public static final String URL_MCK = "file:///C:/Users/sofer/AppData/Local/Temp/7zOCA478A9F/Promo7290696200003-097-202209211420-001.xml";
+    public static final String SIZE_15 = "&size=12";
+//https://%D7%9E%D7%9C%D7%A4%D7%A4%D7%95%D7%9F&size=12
+
 
 
 }
