@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class ProductPrices {
-    private TreeMap<String, Float> shufersalPrices = new TreeMap<>();
-    private TreeMap<String, Float> ramiLeviPrices = new TreeMap<>();
-    private TreeMap<String, Float> quikPrices = new TreeMap<>();
-    private TreeMap<String, Float> mckPrices = new TreeMap<>();
+    private TreeMap<String, Double> shufersalPrices = new TreeMap<>();
+    private TreeMap<String, Double> ramiLeviPrices = new TreeMap<>();
+    private TreeMap<String, Double> quikPrices = new TreeMap<>();
+    private TreeMap<String, Double> mckPrices = new TreeMap<>();
     private List<String> products;
 
     public ProductPrices() {
@@ -29,16 +29,17 @@ public class ProductPrices {
 
     public void shufersalPriceComparison(String value) {
         new Thread(() -> {
-            float price = 999;
+            double price = 999;
             try {
                 Document doc = Jsoup.connect(Final.URL_SHUFERSAL + value).get();
                 Elements elementHead = doc.getElementsByClass("middleContainer");
                 Element element = elementHead.get(0).getElementsByClass("number").first();
                 assert element != null;
-                price = Float.parseFloat(element.text());
+                price = Double.parseDouble(element.text());
                 System.out.println(price);
             } catch (Exception e) {
-                System.out.println(e + "error");
+                System.out.println(e + "price error");
+                JOptionPane.showMessageDialog(null, "no such product in shufersal");
             }
             this.shufersalPrices.put(value, price);
         }).start();
@@ -47,7 +48,7 @@ public class ProductPrices {
     public void ramiLeviPriceComparison(String value) {
         System.out.println("rami");
         new Thread(() -> {
-            float price = 999;
+            double price = 999;
             try {
                 Document doc = Jsoup.connect(Final.URL_RAMI_LEVI + value).get();
                 System.out.println("find url");
@@ -57,7 +58,7 @@ public class ProductPrices {
                 System.out.println(element.size());
                 Elements element1 = element.get(0).getElementsByAttribute("data-v-11a263d2");
                 System.out.println(element1);
-                price = Float.parseFloat(element.text());
+                price = Double.parseDouble(element.text());
                 System.out.println(price);
             } catch (Exception e) {
                 System.out.println(e + "error");
@@ -69,7 +70,7 @@ public class ProductPrices {
 
     public void quikPriceComparison(String value) {
         new Thread(() -> {
-            float price = 999;
+            double price = 999;
             try {
                 Document doc = Jsoup.connect(Final.URL_QUIK + value).get();
                 System.out.println("find url");
@@ -91,7 +92,7 @@ public class ProductPrices {
 
     public void mckPriceComparison(String value) {
         new Thread(() -> {
-            float price = 999;
+            double price = 999;
             try {
                 Document doc = Jsoup.connect(Final.URL_MCK).get();
                 System.out.println("find url");

@@ -39,6 +39,8 @@ public class TheShop extends JPanel {
     private JComboBox<String> allPro;
     private ProductPrices productPrices;
     private JButton shoppingCart;
+    private JTextField randomProduct;
+    private JButton randomProductButton;
 
 
     public TheShop(int x, int y, int width, int height) {
@@ -60,7 +62,7 @@ public class TheShop extends JPanel {
     }
 
     public void listOfCategories() {
-        this.categories = new JComboBox<>(new String[]{"All", "Cleaners", "Milk products", "Grains", "Types of breads", "Fruit", "Vegetables", "Meat", "Other"});
+        this.categories = new JComboBox<>(new String[]{"All", "Cleaners", "Milk products", "Grains", "Types of breads", "Fruit", "Vegetables", "Meat", "Other", "Search product"});
         categories.setBounds(Final.CATEGORIES_X, Final.CATEGORIES_Y, Final.CATEGORIES_WIDTH, Final.CATEGORIES_HEIGHT);
         categories.setFont(new Font("Serif", Font.BOLD, 20));
         this.title = new JLabel("Product list available for purchase, please select a product");
@@ -463,6 +465,32 @@ public class TheShop extends JPanel {
         this.repaint();
     }
 
+    public void randomSearch(){
+        System.out.println("randomProduct");
+        remove();
+        this.randomProduct = new JTextField();
+        randomProduct.setBounds(Final.RANDOM_PRODUCT_X, Final.RANDOM_PRODUCT_Y, Final.RANDOM_PRODUCT_WIDTH, Final.RANDOM_PRODUCT_HEIGHT);
+        randomProduct.setFont(new Font("Serif", Font.BOLD, 15));
+        randomProduct.setForeground(Color.BLACK);
+        this.add(randomProduct);
+        this.randomProductButton = new JButton("Search");
+        randomProductButton.setBounds(Final.RANDOM_PRODUCT_BUTTON_X, Final.RANDOM_PRODUCT_BUTTON_Y, Final.RANDOM_PRODUCT_BUTTON_WIDTH, Final.RANDOM_PRODUCT_BUTTON_HEIGHT);
+        randomProductButton.setFont(new Font("Serif", Font.BOLD, 15));
+        randomProductButton.setForeground(Color.BLACK);
+        this.add(randomProductButton);
+        randomProductButton.addActionListener(e -> {
+            try {
+                System.out.println("Random product");
+                this.productPrices.shufersalPriceComparison(randomProduct.getText());
+            } catch (Exception e1) {
+                System.out.println("Random product error");
+            }
+
+        });
+
+        this.repaint();
+    }
+
     public void choiceOfOptions(String typeOfProduct) {
         System.out.println("choiceOfOptions : start");
         switch (typeOfProduct) {
@@ -492,6 +520,9 @@ public class TheShop extends JPanel {
                 break;
             case "All":
                 all();
+                break;
+            case "Search product":
+                randomSearch();
                 break;
         }
     }
@@ -558,6 +589,12 @@ public class TheShop extends JPanel {
             this.remove(allPro);
         } catch (Exception e) {
             System.out.println("remove : allPro");
+        }
+        try {
+            this.remove(randomProduct);
+            this.remove(randomProductButton);
+        } catch (Exception e) {
+            System.out.println("remove : randomProduct, randomProductButton");
         }
         this.repaint();
     }

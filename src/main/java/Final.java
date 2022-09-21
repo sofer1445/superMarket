@@ -126,6 +126,14 @@ public class Final {
     public static final int SHOPPING_CART_Y = 440;
     public static final int SHOPPING_CART_WIDTH = 120;
     public static final int SHOPPING_CART_HEIGHT = 80;
+    public static final int RANDOM_PRODUCT_X = SOAP_X;
+    public static final int RANDOM_PRODUCT_Y = SOAP_Y;
+    public static final int RANDOM_PRODUCT_WIDTH = 150;
+    public static final int RANDOM_PRODUCT_HEIGHT = 100;
+    public static final int RANDOM_PRODUCT_BUTTON_X = SHAMPOO_X;
+    public static final int RANDOM_PRODUCT_BUTTON_Y = SOAP_Y;
+    public static final int RANDOM_PRODUCT_BUTTON_WIDTH = 150;
+    public static final int RANDOM_PRODUCT_BUTTON_HEIGHT = 100;
     public static final String SOAP = "סבון";
     public static final String SHAMPOO = "שמפו";
     public static final String PAPER_TOILET = "נייר טואלט";
